@@ -5,25 +5,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Form</title>
+	<link rel="stylesheet" href="/2-form/styles/styles.css">
 </head>
 
 <body>
-	<div>
-		<p>Регистрация</p>
+	<main>
 		<div>
-			<p>Уже есть аккаунт?</p>
-			<button class="" type="button">Войти</button>
+			<h1>Регистрация</h1>
+			<div>
+				<p>Уже есть аккаунт?</p>
+				<a class="" href="#">Войти</a>
+			</div>
+			<form action="#">
+				<input class="" id="company" name="company" type="text" placeholder="Организация" value="Мой компания" required>
+				<input class="" id="firstName" name="firstName" type="text" placeholder="Имя" required>
+				<input class="" id="lastName" name="lastName" type="text" placeholder="Фамилия" required>
+				<input class="" id="email" name="email" type="email" placeholder="E-mail" required>
+				<button class="" type="button">Зарегистрироваться</button>
+				<label>
+					<input class="" id="policy" name="policy" type="checkbox">Я прочитал и принимаю <span><a class=""
+							href="#">Условия
+							использования</a></span>
+				</label>
+			</form>
 		</div>
-		<form action="#">
-			<input class="" id="company" name="company" type="text" placeholder="Организация" value="Мой компания" required>
-			<input class="" id="firstName" name="firstName" type="text" placeholder="Имя" required>
-			<input class="" id="lastName" name="lastName" type="text" placeholder="Фамилия" required>
-			<input class="" id="email" name="email" type="email" placeholder="E-mail" required>
-			<button class="" type="button">Зарегистрироваться</button>
-			<input class="" id="policy" name="policy" type="checkbox">Я прочитал и принимаю <span><a class="" href="#">Условия
-					использования</a></span>
-		</form>
-	</div>
+	</main>
 </body>
 
 </html>
