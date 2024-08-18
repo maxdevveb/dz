@@ -1,0 +1,22 @@
+.button {
+	@include flex-center(true);
+	gap: 8px;
+	height: var(--button-height);
+	padding-inline: 64px;
+	font-size: 17px;
+	font-weight: 800;
+	color: var(--color-light);
+	background-color: var(--color-accent);
+	border: none;
+	border-radius: var(--border-radius-large);
+	cursor: pointer;
+
+	&--alt {
+		background-color: var(--color-light);
+		color: var(--color-accent);
+	}
+
+	&:hover {
+		opacity: 0.5;
+	}
+}

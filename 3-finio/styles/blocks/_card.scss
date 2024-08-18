@@ -1,0 +1,96 @@
+.card {
+	display: grid;
+	grid-template-areas:
+		'benefit benefit benefit'
+		'title title title'
+		'description description description'
+		'price-section price-section price-section'
+		'button button button';
+	grid-template-rows: auto auto auto auto;
+
+	padding: 48px 40px;
+	border-radius: var(--border-radius);
+	box-shadow: 0px 0px 32px 0px #4e5d7c29;
+	background-color: var(--color-light);
+
+	&--alt {
+		background-color: var(--color-accent);
+		color: var(--color-light);
+
+		.card__description {
+			color: rgba($color: #fff, $alpha: 0.6);
+		}
+
+		.card__price-item:not(:last-child)::after {
+			background-color: rgba($color: #fff, $alpha: 0.16);
+		}
+	}
+
+	&__benefit {
+		grid-area: benefit;
+		align-self: start;
+		justify-self: start;
+
+		padding: 4px 16px;
+		margin-bottom: 16px;
+		background-color: #1abc9c;
+		color: var(--color-light);
+		font-size: 14px;
+		border-radius: var(--border-radius);
+
+		&--alt {
+			margin-bottom: 0;
+			background-color: #ffc736;
+		}
+
+		&--hidden {
+			background-color: transparent;
+		}
+	}
+
+	&__title {
+		grid-area: title;
+		font-weight: 800;
+		font-size: 32px;
+		margin-bottom: 16px;
+	}
+
+	&__description {
+		grid-area: description;
+		color: var(--color-gray);
+		margin-bottom: 50px;
+	}
+
+	&__price-section {
+		grid-area: price-section;
+		display: grid;
+		grid-template-rows: repeat(3, auto);
+		gap: 8px;
+		margin-bottom: 40px;
+	}
+
+	&__price-item {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+
+		&:not(:last-child)::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0px;
+			height: 1px;
+			background-color: #4e5d7c14;
+		}
+
+		&:not(:last-child) {
+			padding-bottom: 8px;
+		}
+	}
+
+	&__button {
+		grid-area: button;
+		align-self: end;
+	}
+}
