@@ -171,12 +171,12 @@ svg * {
 }
 @media (max-width: 1280px) {
   :root {
-    --section-padding-y: 50px;
+    --section-padding-y: 48px;
   }
 }
 @media (max-width: 767px) {
   :root {
-    --section-padding-y: 30px;
+    --section-padding-y: 80px;
   }
 }
 
@@ -314,6 +314,7 @@ h4,
 @media (max-width: 1023px) {
   .section__header {
     text-align: start;
+    margin-bottom: 32px;
   }
 }
 .section__title {
