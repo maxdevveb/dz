@@ -1,0 +1,54 @@
+.advantage {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	align-items: center;
+	justify-content: center;
+	gap: 40px;
+	margin-bottom: var(--section-padding-y);
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+
+	&__title {
+		margin-bottom: 24px;
+	}
+}
+
+.advantage--space-right {
+	.advantage__text {
+		grid-column: 2 / span 5;
+
+		@include tablet {
+			grid-column: span 1;
+			order: 2;
+		}
+	}
+
+	.advantage__content {
+		grid-column: 7 / span 6;
+
+		@include tablet {
+			grid-column: span 1;
+			order: 1;
+		}
+	}
+}
+
+.advantage--space-left {
+	.advantage__text {
+		grid-column: 7 / span 6;
+
+		@include tablet {
+			grid-column: span 1;
+		}
+	}
+
+	.advantage__content {
+		grid-column: 1 / span 6;
+
+		@include tablet {
+			grid-column: span 1;
+		}
+	}
+}

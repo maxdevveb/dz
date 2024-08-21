@@ -22,8 +22,13 @@ a {
 	color: inherit;
 }
 
-h1,
-h2,
+h1 {
+	font-weight: 800;
+}
+
+h2 {
+	font-weight: 800;
+}
 h3,
 h4 {
 	font-weight: 600;
@@ -31,20 +36,25 @@ h4 {
 
 h1,
 .h1 {
-	@include fluid-text(60, 43);
+	@include fluid-text(40, 32);
 }
 
 h2,
 .h2 {
-	@include fluid-text(40, 36);
+	@include fluid-text(24, 18);
 }
 
 h3,
 .h3 {
-	@include fluid-text(30, 26);
+	@include fluid-text(40, 32);
 }
 
 h4,
 .h4 {
-	@include fluid-text(20, 18);
+	@include fluid-text(48, 36);
+}
+
+h5,
+.h5 {
+	@include fluid-text(32, 24);
 }

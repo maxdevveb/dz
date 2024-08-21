@@ -4,13 +4,6 @@
 	padding-inline: var(--container-padding-x);
 }
 
-.grid {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	gap: 24px;
-	justify-content: center;
-}
-
 .visually-hidden {
 	@include visually-hidden;
 }
@@ -36,5 +29,53 @@
 .visible-mobile {
 	@include mobile-above {
 		display: none !important;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 24px;
+	justify-content: center;
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dull-text {
+	color: var(--color-gray);
+
+	&--alt {
+		color: var(--color-accent-alt);
+	}
+}
+
+.has-divider {
+	position: relative;
+	padding-bottom: var(--section-padding-y);
+}
+
+.has-divider::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background-color: #f1f2f5;
+}
+
+.line {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background-color: #f1f2f5;
 	}
 }

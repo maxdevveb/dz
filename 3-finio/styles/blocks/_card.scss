@@ -1,3 +1,13 @@
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
 .card {
 	display: grid;
 	grid-template-areas:
@@ -16,10 +26,6 @@
 	&--alt {
 		background-color: var(--color-accent);
 		color: var(--color-light);
-
-		.card__description {
-			color: rgba($color: #fff, $alpha: 0.6);
-		}
 
 		.card__price-item:not(:last-child)::after {
 			background-color: rgba($color: #fff, $alpha: 0.16);
@@ -57,7 +63,6 @@
 
 	&__description {
 		grid-area: description;
-		color: var(--color-gray);
 		margin-bottom: 50px;
 	}
 

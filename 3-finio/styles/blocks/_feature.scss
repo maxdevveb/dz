@@ -1,0 +1,19 @@
+.feature-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 64px;
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.feature {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+
+	svg {
+		color: var(--color-accent);
+	}
+}

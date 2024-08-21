@@ -2,6 +2,32 @@
 	padding-top: var(--section-padding-y);
 	padding-bottom: var(--section-padding-y);
 
+	@media (max-width: 1600px) {
+		&:first-child {
+			padding-top: 24px;
+		}
+	}
+
+	&--accent {
+		background-color: var(--color-accent);
+	}
+
+	&--accent-mobile {
+		@include tablet {
+			background-color: var(--color-accent);
+			padding-bottom: 0;
+		}
+	}
+
+	&--gradient {
+		position: relative;
+		background: linear-gradient(
+			173deg,
+			hsl(218deg 99% 60%) 65%,
+			hsl(0deg 0% 100%) 66%
+		);
+	}
+
 	&__header {
 		text-align: center;
 		margin-bottom: 40px;
@@ -18,5 +44,9 @@
 
 	&__description {
 		color: var(--color-gray);
+
+		@include tablet {
+			margin-bottom: 32px;
+		}
 	}
 }

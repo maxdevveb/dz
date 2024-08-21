@@ -2,7 +2,7 @@
 	@include flex-center(true);
 	gap: 8px;
 	height: var(--button-height);
-	padding-inline: 64px;
+	padding-inline: 32px;
 	font-size: 17px;
 	font-weight: 800;
 	color: var(--color-light);
@@ -11,12 +11,32 @@
 	border-radius: var(--border-radius-large);
 	cursor: pointer;
 
+	&:hover {
+		opacity: 0.8;
+	}
+
 	&--alt {
 		background-color: var(--color-light);
 		color: var(--color-accent);
 	}
 
-	&:hover {
-		opacity: 0.5;
+	&--large {
+		padding-inline: 64px;
+	}
+
+	&--slider {
+		padding: 0;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		opacity: 0.8;
+		color: var(--color-accent);
+		background-color: var(--color-light);
+
+		&:hover {
+			background-color: var(--color-light);
+			color: var(--color-accent);
+			opacity: 1;
+		}
 	}
 }

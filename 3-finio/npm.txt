@@ -1,1 +1,0 @@
-npm i --save-dev stylelint  stylelint-order stylelint-semantic-groups

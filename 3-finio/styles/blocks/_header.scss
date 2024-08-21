@@ -1,0 +1,40 @@
+.header {
+	background-color: var(--color-accent);
+	color: var(--color-light);
+	padding-top: 40px;
+	padding-bottom: 40px;
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__logo {
+		font-size: 36px;
+		font-weight: 900;
+	}
+
+	&__menu {
+		font-size: 18px;
+
+		&-list {
+			display: flex;
+			align-items: center;
+			gap: 32px;
+		}
+
+		&-item {
+			opacity: 0.8;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__mobile-menu-button {
+		@include reset-button;
+		color: var(--color-light);
+	}
+}

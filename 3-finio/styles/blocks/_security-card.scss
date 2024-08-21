@@ -1,0 +1,26 @@
+.security-card-container {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 24px;
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.security-card {
+	grid-column: span 4;
+
+	@include tablet {
+		grid-column: span 1;
+	}
+
+	&__image {
+		color: var(--color-accent);
+		margin-bottom: 24px;
+	}
+
+	&__title {
+		margin-bottom: 20px;
+	}
+}
