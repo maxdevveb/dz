@@ -161,7 +161,7 @@ svg * {
   --color-dark-gray: #8c8e92;
   --border: 1px solid var(--color-light);
   --border-radius: 16px;
-  --border-radius-small: 7px;
+  --border-radius-small: 8px;
   --border-radius-large: 47px;
   --shadow: 0 5px 0 0 var(--color-dark);
   --font-family-base: "Space Grotesk", sans-serif;
@@ -260,8 +260,18 @@ svg * {
   background-color: #f1f2f5;
 }
 .has-divider--not-full::after {
-  width: calc(100% - 2 * var(--container-padding-x));
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
   margin: 0 auto;
+}
+@media (max-width: 1023px) {
+  .has-divider--not-full::after {
+    width: calc(100% - 2 * var(--container-padding-x));
+  }
+}
+@media (min-width: 1281px) {
+  .has-divider--not-full--tablet-hidden::after {
+    display: none;
+  }
 }
 @media (max-width: 1280px) {
   .has-divider--not-full--tablet-hidden::after {
@@ -381,6 +391,26 @@ h5,
   opacity: 1;
 }
 
+.pill {
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+  overflow: hidden;
+  color: var(--color-light);
+}
+
+.pill::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -16px;
+  right: -16px;
+  bottom: -8px;
+  background-color: #ffc736;
+  z-index: -1;
+  border-radius: var(--border-radius-small);
+}
+
 .header {
   background-color: var(--color-accent);
   color: var(--color-light);
@@ -431,7 +461,7 @@ h5,
   padding-top: var(--section-padding-y);
   padding-bottom: var(--section-padding-y);
 }
-@media (max-width: 1600px) {
+@media (max-width: 1626px) {
   .section:first-child {
     padding-top: 24px;
   }
@@ -476,7 +506,7 @@ h5,
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 1600px) {
+@media (max-width: 1626px) {
   .hero {
     margin-right: auto;
   }
@@ -858,7 +888,7 @@ h5,
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1280px) {
   .card-container {
     grid-template-columns: 1fr;
   }
@@ -866,8 +896,8 @@ h5,
 
 .card {
   display: grid;
-  grid-template-areas: "benefit benefit benefit" "title title title" "description description description" "price-section price-section price-section" "button button button";
-  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "benefit" "title" "description" "price-section" "button";
+  grid-template-rows: auto auto 1fr;
   padding: 48px 40px;
   border-radius: var(--border-radius);
   box-shadow: 0px 0px 32px 0px rgba(78, 93, 124, 0.1607843137);
@@ -895,7 +925,8 @@ h5,
   background-color: #ffc736;
 }
 .card__benefit--hidden {
-  background-color: transparent;
+  height: 28px;
+  visibility: hidden;
 }
 .card__title {
   grid-area: title;
@@ -908,28 +939,41 @@ h5,
   margin-bottom: 50px;
 }
 .card__price-section {
-  grid-area: price-section;
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  gap: 8px;
+  display: flex;
+  width: 100%;
   margin-bottom: 40px;
 }
-.card__price-item {
-  position: relative;
+.card__price-labels, .card__price-values {
+  white-space: nowrap;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
 }
-.card__price-item:not(:last-child)::after {
+.card__price-labels {
+  flex: 1;
+  text-align: left;
+}
+.card__price-values {
+  flex: 1;
+  text-align: left;
+}
+.card__price-label, .card__price-value {
+  position: relative;
+  padding-bottom: 16px;
+}
+.card__price-label:not(:last-child)::after, .card__price-value:not(:last-child)::after {
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: 0px;
+  bottom: 0;
+  width: 100%;
   height: 1px;
-  background-color: rgba(78, 93, 124, 0.0784313725);
+  background-color: var(--color-gray);
+  opacity: 0.2;
 }
-.card__price-item:not(:last-child) {
-  padding-bottom: 8px;
+.card__price-label {
+  padding-right: 16px;
 }
 .card__button {
   grid-area: button;

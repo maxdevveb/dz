@@ -3,7 +3,7 @@
 	grid-template-columns: repeat(3, 1fr);
 	gap: 24px;
 
-	@include tablet {
+	@include desktop {
 		grid-template-columns: 1fr;
 	}
 }
@@ -11,12 +11,12 @@
 .card {
 	display: grid;
 	grid-template-areas:
-		'benefit benefit benefit'
-		'title title title'
-		'description description description'
-		'price-section price-section price-section'
-		'button button button';
-	grid-template-rows: auto auto auto auto;
+		'benefit'
+		'title'
+		'description'
+		'price-section'
+		'button';
+	grid-template-rows: auto auto 1fr;
 
 	padding: 48px 40px;
 	border-radius: var(--border-radius);
@@ -49,7 +49,8 @@
 		}
 
 		&--hidden {
-			background-color: transparent;
+			height: 28px;
+			visibility: hidden;
 		}
 	}
 
@@ -66,31 +67,50 @@
 	}
 
 	&__price-section {
-		grid-area: price-section;
-		display: grid;
-		grid-template-rows: repeat(3, auto);
-		gap: 8px;
+		display: flex;
+		width: 100%;
 		margin-bottom: 40px;
 	}
 
-	&__price-item {
-		position: relative;
+	&__price-labels,
+	&__price-values {
+		white-space: nowrap;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		gap: 16px;
+
+		position: relative;
+	}
+
+	&__price-labels {
+		flex: 1;
+		text-align: left;
+	}
+
+	&__price-values {
+		flex: 1;
+		text-align: left;
+	}
+
+	&__price-label,
+	&__price-value {
+		position: relative;
+		padding-bottom: 16px;
 
 		&:not(:last-child)::after {
 			content: '';
 			position: absolute;
 			left: 0;
-			right: 0;
-			bottom: 0px;
+			bottom: 0;
+			width: 100%;
 			height: 1px;
-			background-color: #4e5d7c14;
+			background-color: var(--color-gray);
+			opacity: 0.2;
 		}
+	}
 
-		&:not(:last-child) {
-			padding-bottom: 8px;
-		}
+	&__price-label {
+		padding-right: 16px;
 	}
 
 	&__button {
