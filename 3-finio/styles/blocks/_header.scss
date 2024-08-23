@@ -36,5 +36,11 @@
 	&__mobile-menu-button {
 		@include reset-button;
 		color: var(--color-light);
+
+		&:hover {
+			@include hover {
+				cursor: pointer;
+			}
+		}
 	}
 }

@@ -6,6 +6,16 @@
 	}
 
 	&__image-wrapper {
-		overflow: hidden;
+		@include tablet {
+			position: relative;
+			margin-right: -600px;
+		}
+	}
+
+	&__image {
+		@include tablet {
+			width: 100%;
+			height: auto;
+		}
 	}
 }

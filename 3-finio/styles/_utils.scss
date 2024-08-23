@@ -54,20 +54,6 @@
 .has-divider {
 	position: relative;
 	padding-bottom: var(--section-padding-y);
-}
-
-.has-divider::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background-color: #f1f2f5;
-}
-
-.line {
-	position: relative;
 
 	&::after {
 		content: '';
@@ -78,4 +64,26 @@
 		height: 1px;
 		background-color: #f1f2f5;
 	}
+
+	&--not-full::after {
+		width: calc(100% - 2 * var(--container-padding-x));
+		margin: 0 auto;
+	}
+
+	&--not-full--tablet-hidden::after {
+		@include desktop {
+			display: none;
+		}
+
+		@include tablet {
+			display: block;
+			width: calc(100% - 2 * var(--container-padding-x));
+			margin: 0 auto;
+			background-color: #5593fe;
+		}
+	}
+}
+
+.overflow-hidden {
+	overflow: hidden;
 }
