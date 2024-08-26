@@ -23,8 +23,8 @@
 		position: relative;
 		background: linear-gradient(
 			173deg,
-			hsl(218deg 99% 60%) 65%,
-			hsl(0deg 0% 100%) 66%
+			hsl(218, 99%, 60%) 66%,
+			hsl(0, 0%, 100%) calc(66% + 1px)
 		);
 	}
 

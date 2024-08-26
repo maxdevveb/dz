@@ -1,4 +1,5 @@
 body {
+	min-width: 375px;
 	@include fluid-text(17, 17);
 
 	// font-family: var(--font-family-base);

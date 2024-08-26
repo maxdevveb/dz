@@ -3,10 +3,6 @@
 	align-items: center;
 	justify-content: center;
 
-	// @include desktop-above {
-	// 	margin-right: auto;
-	// }
-
 	@media (max-width: 1626px) {
 		margin-right: auto;
 	}

@@ -292,6 +292,7 @@ svg * {
 }
 
 body {
+  min-width: 375px;
   font-size: clamp(17px, 1.1805555556vw, 17px);
   font-family: "Inter";
   font-weight: 500;
@@ -365,6 +366,7 @@ h5,
   border: none;
   border-radius: var(--border-radius-large);
   cursor: pointer;
+  white-space: nowrap;
 }
 .button:hover {
   opacity: 0.8;
@@ -379,8 +381,8 @@ h5,
 .button--slider {
   padding: 0;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   opacity: 0.8;
   color: var(--color-accent);
   background-color: var(--color-light);
@@ -389,6 +391,12 @@ h5,
   background-color: var(--color-light);
   color: var(--color-accent);
   opacity: 1;
+}
+@media (max-width: 1280px) {
+  .button--slider {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .pill {
@@ -477,7 +485,7 @@ h5,
 }
 .section--gradient {
   position: relative;
-  background: linear-gradient(173deg, hsl(218, 99%, 60%) 65%, hsl(0, 0%, 100%) 66%);
+  background: linear-gradient(173deg, hsl(218, 99%, 60%) 66%, hsl(0, 0%, 100%) calc(66% + 1px));
 }
 .section__header {
   text-align: center;
@@ -889,6 +897,11 @@ h5,
   gap: 24px;
 }
 @media (max-width: 1280px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1023px) {
   .card-container {
     grid-template-columns: 1fr;
   }
