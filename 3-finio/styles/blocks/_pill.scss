@@ -1,0 +1,19 @@
+.pill {
+	position: relative;
+	background-color: transparent;
+	z-index: 1;
+	overflow: hidden;
+	color: var(--color-light);
+}
+
+.pill::before {
+	content: '';
+	position: absolute;
+	top: -8px;
+	left: -16px;
+	right: -16px;
+	bottom: -8px;
+	background-color: #ffc736;
+	z-index: -1;
+	border-radius: var(--border-radius-small);
+}

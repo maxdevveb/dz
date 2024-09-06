@@ -1,0 +1,56 @@
+.support {
+	background-color: var(--color-accent);
+	border-radius: var(--border-radius);
+	color: var(--color-light);
+	align-items: center;
+
+	@include tablet {
+		background-color: transparent;
+		border-radius: 0;
+	}
+
+	&__left {
+		grid-column: 2 / span 5;
+
+		@include tablet {
+			grid-column: span 1;
+			order: 2;
+			justify-self: center;
+		}
+	}
+
+	&__right {
+		grid-column: 8 / span 4;
+
+		@include tablet {
+			grid-column: span 1;
+			order: 1;
+			margin-bottom: 32px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 24px;
+	}
+
+	&__description {
+		margin-bottom: 40px;
+	}
+
+	&__socials {
+		margin-bottom: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__social {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}

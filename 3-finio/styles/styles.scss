@@ -1,0 +1,30 @@
+/* prettier-ignore */
+
+@import
+  'normalize',
+  'fonts',
+  'mixins',
+  'media',
+  'variables',
+  'utils',
+  'globals';
+
+@import 
+  'blocks/button',
+  'blocks/pill',
+  'blocks/header',
+  'blocks/section',
+  'blocks/hero',
+  'blocks/feature',
+  'blocks/advantage',
+  'blocks/offer',
+  'blocks/security',
+  'blocks/security-card',
+  'blocks/mobile-version',
+  'blocks/support',
+  'blocks/tariffs',
+  'blocks/feedback',
+  'blocks/dot',
+  'blocks/slider',
+  'blocks/card',
+  'blocks/footer';

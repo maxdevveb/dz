@@ -1,0 +1,52 @@
+.section {
+	padding-top: var(--section-padding-y);
+	padding-bottom: var(--section-padding-y);
+
+	@media (max-width: 1626px) {
+		&:first-child {
+			padding-top: 24px;
+		}
+	}
+
+	&--accent {
+		background-color: var(--color-accent);
+	}
+
+	&--accent-mobile {
+		@include tablet {
+			background-color: var(--color-accent);
+			padding-bottom: 0;
+		}
+	}
+
+	&--gradient {
+		position: relative;
+		background: linear-gradient(
+			173deg,
+			hsl(218, 99%, 60%) 66%,
+			hsl(0, 0%, 100%) calc(66% + 1px)
+		);
+	}
+
+	&__header {
+		text-align: center;
+		margin-bottom: 40px;
+
+		@include tablet {
+			text-align: start;
+			margin-bottom: 32px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 24px;
+	}
+
+	&__description {
+		color: var(--color-gray);
+
+		@include tablet {
+			margin-bottom: 32px;
+		}
+	}
+}

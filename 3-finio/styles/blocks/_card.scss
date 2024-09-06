@@ -1,0 +1,124 @@
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 24px;
+
+	@include desktop {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.card {
+	display: grid;
+	grid-template-areas:
+		'benefit'
+		'title'
+		'description'
+		'price-section'
+		'button';
+	grid-template-rows: auto auto 1fr;
+
+	padding: 48px 40px;
+	border-radius: var(--border-radius);
+	box-shadow: 0px 0px 32px 0px #4e5d7c29;
+	background-color: var(--color-light);
+
+	&--alt {
+		background-color: var(--color-accent);
+		color: var(--color-light);
+
+		.card__price-item:not(:last-child)::after {
+			background-color: rgba($color: #fff, $alpha: 0.16);
+		}
+	}
+
+	&__benefit {
+		grid-area: benefit;
+		align-self: start;
+		justify-self: start;
+
+		padding: 4px 16px;
+		margin-bottom: 16px;
+		background-color: #1abc9c;
+		color: var(--color-light);
+		border-radius: var(--border-radius-small);
+
+		&--alt {
+			margin-bottom: 0;
+			background-color: #ffc736;
+		}
+
+		&--hidden {
+			height: 28px;
+			visibility: hidden;
+		}
+	}
+
+	&__title {
+		grid-area: title;
+		font-weight: 800;
+		font-size: 32px;
+		margin-bottom: 16px;
+	}
+
+	&__description {
+		grid-area: description;
+		margin-bottom: 50px;
+	}
+
+	&__price-section {
+		display: flex;
+		width: 100%;
+		margin-bottom: 40px;
+	}
+
+	&__price-labels,
+	&__price-values {
+		white-space: nowrap;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		position: relative;
+	}
+
+	&__price-labels {
+		flex: 1;
+		text-align: left;
+	}
+
+	&__price-values {
+		flex: 1;
+		text-align: left;
+	}
+
+	&__price-label,
+	&__price-value {
+		position: relative;
+		padding-bottom: 16px;
+
+		&:not(:last-child)::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 1px;
+			background-color: var(--color-gray);
+			opacity: 0.2;
+		}
+	}
+
+	&__price-label {
+		padding-right: 16px;
+	}
+
+	&__button {
+		grid-area: button;
+		align-self: end;
+	}
+}

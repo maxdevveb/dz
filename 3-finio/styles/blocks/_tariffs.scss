@@ -1,0 +1,7 @@
+.tariffs {
+	grid-column: 2 / span 10;
+
+	@include tablet {
+		grid-column: span 1;
+	}
+}

@@ -1,0 +1,96 @@
+.container {
+	max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+	margin-inline: auto;
+	padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+	@include visually-hidden;
+}
+
+.hidden-tablet {
+	@include tablet {
+		display: none !important;
+	}
+}
+
+.visible-tablet {
+	@include tablet-above {
+		display: none !important;
+	}
+}
+
+.hidden-mobile {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.visible-mobile {
+	@include mobile-above {
+		display: none !important;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: 24px;
+	justify-content: center;
+
+	@include tablet {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dull-text {
+	color: var(--color-gray);
+
+	&--alt {
+		color: var(--color-accent-alt);
+	}
+}
+
+.has-divider {
+	position: relative;
+	padding-bottom: var(--section-padding-y);
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background-color: #f1f2f5;
+	}
+
+	&--not-full::after {
+		max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+		margin: 0 auto;
+
+		@include tablet {
+			width: calc(100% - 2 * var(--container-padding-x));
+		}
+	}
+
+	&--not-full--tablet-hidden::after {
+		@include desktop-above {
+			display: none;
+		}
+		@include desktop {
+			display: none;
+		}
+
+		@include tablet {
+			display: block;
+			width: calc(100% - 2 * var(--container-padding-x));
+			margin: 0 auto;
+			background-color: #5593fe;
+		}
+	}
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}

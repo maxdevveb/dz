@@ -1,0 +1,21 @@
+.mobile-version {
+	grid-column: 2 / span 10;
+
+	@include tablet {
+		grid-column: span 1;
+	}
+
+	&__image-wrapper {
+		@include tablet {
+			position: relative;
+			margin-right: -600px;
+		}
+	}
+
+	&__image {
+		@include tablet {
+			width: 100%;
+			height: auto;
+		}
+	}
+}

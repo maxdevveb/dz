@@ -1,0 +1,48 @@
+.button {
+	@include flex-center(true);
+	gap: 8px;
+	height: var(--button-height);
+	padding-inline: 32px;
+	font-size: 17px;
+	font-weight: 800;
+	color: var(--color-light);
+	background-color: var(--color-accent);
+	border: none;
+	border-radius: var(--border-radius-large);
+	cursor: pointer;
+	white-space: nowrap;
+
+	&:hover {
+		opacity: 0.8;
+	}
+
+	&--alt {
+		background-color: var(--color-light);
+		color: var(--color-accent);
+	}
+
+	&--large {
+		padding-inline: 64px;
+	}
+
+	&--slider {
+		padding: 0;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		opacity: 0.8;
+		color: var(--color-accent);
+		background-color: var(--color-light);
+
+		&:hover {
+			background-color: var(--color-light);
+			color: var(--color-accent);
+			opacity: 1;
+		}
+
+		@include desktop {
+			width: 40px;
+			height: 40px;
+		}
+	}
+}

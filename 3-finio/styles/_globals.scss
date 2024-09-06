@@ -1,0 +1,61 @@
+body {
+	min-width: 375px;
+	@include fluid-text(17, 17);
+
+	// font-family: var(--font-family-base);
+	font-family: 'Inter';
+	font-weight: 500;
+	line-height: 1.2;
+	color: var(--color-dark);
+	background-color: var(--color-light);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+	transition-duration: var(--transition-duration);
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+h1 {
+	font-weight: 800;
+}
+
+h2 {
+	font-weight: 800;
+}
+h3,
+h4 {
+	font-weight: 600;
+}
+
+h1,
+.h1 {
+	@include fluid-text(40, 32);
+}
+
+h2,
+.h2 {
+	@include fluid-text(24, 18);
+}
+
+h3,
+.h3 {
+	@include fluid-text(40, 32);
+}
+
+h4,
+.h4 {
+	@include fluid-text(48, 36);
+}
+
+h5,
+.h5 {
+	@include fluid-text(32, 24);
+}
