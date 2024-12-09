@@ -1,0 +1,470 @@
+@charset "UTF-8";
+/* prettier-ignore */
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+	 Убираем внутренние отступы слева тегам списков,
+	 у которых есть атрибут class
+	*/
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+	 Убираем внешние отступы body и двум другим тегам,
+	 у которых есть атрибут class
+	*/
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+	 Убираем внешние отступы вертикали нужным тегам,
+	 у которых есть атрибут class
+	*/
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+	 Убираем стандартный маркер маркированному списку,
+	 у которого есть атрибут class
+	*/
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+	 Обнуляем вертикальные внешние отступы параграфа,
+	 объявляем локальную переменную для внешнего отступа вниз,
+	 чтобы избежать взаимодействие с более сложным селектором
+	*/
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+	 Внешний отступ вниз для параграфа без атрибута class,
+	 который расположен не последним среди своих соседних элементов
+	*/
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+	 Упрощаем работу с изображениями
+	*/
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+	 Наследуем свойства шрифт для полей ввода
+	*/
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+  	 Пригодится в большинстве ситуаций
+  	 (когда, например, нужно будет "прижать" футер к низу сайта)
+  	*/
+  height: 100%;
+  /**
+  	 Плавный скролл
+  	*/
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+  	 Пригодится в большинстве ситуаций
+  	 (когда, например, нужно будет "прижать" футер к низу сайта)
+  	*/
+  min-height: 100%;
+  /**
+  	 Унифицированный интерлиньяж
+  	*/
+  line-height: 1.5;
+}
+
+/**
+	 Приводим к единому цвету svg-элементы
+	*/
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+	 Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+	*/
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+	 Удаляем все анимации и переходы для людей,
+	 которые предпочитают их не использовать
+	*/
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body,
+input {
+  font-family: "Comfortaa", sans-serif;
+}
+
+body {
+  font-weight: 400;
+  background-color: #f3f6fd;
+}
+
+button img {
+  display: inline;
+}
+
+.app {
+  display: flex;
+}
+
+.panel {
+  min-height: 100vh;
+  padding: 30px;
+  background-color: white;
+}
+
+.logo {
+  margin-bottom: 50px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.menu__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 14px;
+  background-color: #fff;
+  box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.1215686275);
+  cursor: pointer;
+}
+.menu__item:hover {
+  background: #6a6afb;
+}
+.menu__item:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.menu__item--active {
+  background: #5051f9;
+}
+.menu__item--active img {
+  filter: brightness(0) invert(1);
+}
+
+.menu__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #cad5ff;
+  border-radius: 14px;
+  background: none;
+  cursor: pointer;
+}
+.menu__add:hover {
+  background: #e7ebff;
+}
+
+.content {
+  min-width: 900px;
+  padding: 45px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  color: #000;
+  font-size: 30px;
+  line-height: 33px;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 235px;
+}
+
+.progress__text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress__name {
+  color: #232360;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.progress__percent {
+  color: #768396;
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.progress__bar {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  border-radius: 4px;
+  background: #e6e9ed;
+}
+
+.progress__cover-bar {
+  position: absolute;
+  height: 5px;
+  border-radius: 4px;
+  background: #5051f9;
+  transition: all 0.5s;
+}
+
+main {
+  margin-top: 30px;
+}
+
+.habit {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.habit__day {
+  min-width: 150px;
+  padding: 20px 40px;
+  font-size: 14px;
+  line-height: 16px;
+  border-right: 1px solid #e7ebfb;
+  border-radius: 10px 0 0 10px;
+  background: #fbfaff;
+}
+
+.habit__comment {
+  padding: 20px 25px;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+.habit__delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  margin-left: auto;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+}
+.habit__delete:hover {
+  background: #e7ebff;
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #e7ebfb;
+  border-radius: 9px;
+  background: #fff;
+}
+input::-moz-placeholder {
+  color: #8899a8;
+}
+input::placeholder {
+  color: #8899a8;
+}
+
+input.error {
+  border: 1px solid red;
+}
+
+.habit__form {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  padding: 0 25px;
+}
+
+.input--icon {
+  padding-left: 45px;
+}
+
+.input__icon {
+  position: absolute;
+  top: 10px;
+  left: 45px;
+}
+
+.button {
+  padding: 14px 30px;
+  color: #5051f9;
+  font-size: 13px;
+  line-height: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #edecfe;
+  cursor: pointer;
+}
+.button:hover {
+  background: #dcdaff;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+}
+.cover--hidden {
+  display: none;
+}
+
+.popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 8px 14px 12px rgba(56, 56, 56, 0.05);
+}
+.popup__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 27px;
+}
+
+.icon-label {
+  margin-bottom: 10px;
+  color: #768396;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.icon-select {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 10px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: 1px solid #5051f9;
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+}
+.icon--active {
+  background: #5051f9;
+}
+.icon--active img {
+  filter: brightness(0) invert(1);
+}
+.icon:hover {
+  background: #6a6afb;
+}
+.icon:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.popup__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+}
+.popup__form input {
+  width: 100%;
+}

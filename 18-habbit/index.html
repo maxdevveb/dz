@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible"
+		content="ie=edge">
+	<meta name="theme-color"
+		content="#fff">
+
+	<link rel="preconnect"
+		href="https://fonts.googleapis.com">
+	<link rel="preconnect"
+		href="https://fonts.gstatic.com"
+		crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet"
+		href="./styles/css/styles.css">
+	<title>Habbit</title>
+</head>
+
+<body>
+	<div class="app">
+		<div class="panel">
+			<img class="logo"
+				src="./images/logo.svg"
+				alt="">
+			<nav class="menu">
+				<div class="menu__list">
+					<button class="menu__item menu__item--active"
+						type="button"
+						menu-habit-id="1">
+						<img class=""
+							src="./images/icons/Dumbbell.svg"
+							alt=""
+							width="24"
+							height="24">
+					</button>
+					<button class="menu__item"
+						type="button">
+						<img class=""
+							src="./images/icons/Water.svg"
+							alt=""
+							width="24"
+							height="24">
+					</button>
+					<button class="menu__item"
+						type="button">
+						<img class=""
+							src="./images/icons/food.svg"
+							alt=""
+							width="24"
+							height="24">
+					</button>
+				</div>
+				<button class="menu__add"
+					type="button"
+					onclick="togglePopup()">
+					<img class=""
+						src="./images/icons/Add.svg"
+						alt=""
+						width="24"
+						height="24">
+				</button>
+			</nav>
+		</div>
+		<div class="content">
+			<header>
+				<h1 class="h1">-</h1>
+				<div class="progress">
+					<div class="progress__text">
+						<div class="progress__name">Прогресс</div>
+						<div class="progress__percent">%</div>
+					</div>
+					<div class="progress__bar">
+						<div class="progress__cover-bar"></div>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div id="days"></div>
+				<div class="habit">
+					<div class="habit__day">День _</div>
+					<form class="habit__form"
+						onsubmit="addDays(event)"
+						action="">
+						<input class="input--icon"
+							id=""
+							name="comment"
+							type="text"
+							placeholder="Комментарий">
+						<img class="input__icon"
+							src="./images/icons/comment.svg"
+							alt="">
+						<button class="button"
+							type="submit">Готово</button>
+					</form>
+				</div>
+			</main>
+			<div class="cover cover--hidden"
+				id="add-habit-popup">
+				<div class="popup">
+					<h2>Новая привычка</h2>
+					<div class="icon-label">Иконка</div>
+					<div class="icon-select">
+						<button class="icon icon--active"
+							type="button"
+							onclick="setIcon(this, 'Dumbbell')">
+							<img class=""
+								src="./images/icons/Dumbbell.svg"
+								alt="">
+						</button>
+						<button class="icon"
+							type="button"
+							onclick="setIcon(this, 'Water')">
+							<img class=""
+								src="./images/icons/Water.svg"
+								alt="">
+						</button>
+						<button class="icon"
+							type="button"
+							onclick="setIcon(this, 'food')">
+							<img class=""
+								src="./images/icons/food.svg"
+								alt="">
+						</button>
+					</div>
+					<form class="popup__form"
+						action=""
+						onsubmit="addHabit(event)">
+						<input class=""
+							id=""
+							name="name"
+							type="text"
+							placeholder="Название">
+						<input class=""
+							id=""
+							name="icon"
+							type="text"
+							placeholder="Иконка"
+							value="Dumbbell"
+							hidden>
+						<input class=""
+							id=""
+							name="target"
+							type="number"
+							placeholder="Цель">
+						<button class="button"
+							type="submit">Добавить</button>
+						<button class="popup__close"
+							type="button"
+							onclick="togglePopup()">
+							<img class=""
+								src="./images/icons/close.svg"
+								alt="">
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./scripts/app.js"></script>
+</body>
+
+</html>
