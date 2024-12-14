@@ -4,91 +4,61 @@
 
 'use strict'
 
-const newTask = {
-	tasks: [
-		{
-			id: 1,
-			name: 'test',
-			description: 'desc',
-			order: 0,
-		},
-	],
-}
+const ToDoList = {
+	tasks: [],
+	nextId: 1,
 
-const ToDoListWithDescription = {
-	tasks: [], // Хранение списка задач
-	nextId: 1, // Для генерации уникальных id
-
-	// Метод для добавления задачи с описанием
-	addTask: function (name, description, order) {
+	addTask(title, priority) {
 		const task = {
-			name: name,
+			title,
 			id: this.nextId++,
-			description: description,
-			order: order,
+			priority,
 		}
 		this.tasks.push(task)
 	},
-
-	// Метод для удаления задачи по id
-	removeTaskById: function (id) {
+	removeTaskById(id) {
 		this.tasks = this.tasks.filter(task => task.id !== id)
 	},
-
-	// Метод для обновления задачи по id
-	updateTaskById: function (id, newName, newDescription, newOrder) {
+	updateTaskById(id, newTitle, newPriority) {
 		const task = this.tasks.find(task => task.id === id)
 		if (task) {
-			if (newName !== undefined) {
-				task.name = newName
+			if (newTitle !== undefined) {
+				task.title = newTitle
 			}
-			if (newDescription !== undefined) {
-				task.description = newDescription
-			}
-			if (newOrder !== undefined) {
-				task.order = newOrder
+			if (newPriority !== undefined) {
+				task.priority = newPriority
 			}
 		} else {
 			console.log(`Задача с id ${id} не найдена.`)
 		}
 	},
-
-	// Метод для сортировки задач по порядку (order)
-	sortTasksByOrder: function () {
-		this.tasks.sort((a, b) => a.order - b.order)
+	sortTasksByPriority() {
+		this.tasks.sort((a, b) => b.priority - a.priority)
 	},
 }
 
-// Примеры использования:
+const newList = Object.create(ToDoList)
 
-ToDoListWithDescription.addTask(
-	'Помыть посуду',
-	'Необходимо помыть всю посуду на кухне',
-	2
-)
-ToDoListWithDescription.addTask(
-	'Сделать домашку',
-	'Домашнее задание по математике',
-	1
-)
-ToDoListWithDescription.addTask('Купить продукты', 'Купить молоко и хлеб', 3)
+newList.tasks = []
+newList.nextId = 1
 
-console.log('Задачи после добавления:')
-console.log(ToDoListWithDescription.tasks)
+newList.addTask = function (title, priority, description = '') {
+	ToDoList.addTask.call(this, title, priority)
+	this.tasks[this.tasks.length - 1].description = description
+}
 
-ToDoListWithDescription.removeTaskById(2)
-console.log(`Задачи после удаления задачи с id 2:`)
-console.log(ToDoListWithDescription.tasks)
+newList.updateTaskById = function (id, newTitle, newPriority, newDescription) {
+	ToDoList.updateTaskById.call(this, id, newTitle, newPriority)
+	const task = this.tasks.find(task => task.id === id)
+	if (task && newDescription !== undefined) {
+		task.description = newDescription
+	}
+}
 
-ToDoListWithDescription.updateTaskById(
-	1,
-	'Помыть посуду и стекло',
-	'Помыть посуду и стекло на кухне',
-	1
-)
-console.log('Задачи после обновления задачи id 1:')
-console.log(ToDoListWithDescription.tasks)
-
-ToDoListWithDescription.sortTasksByOrder()
-console.log('Задачи после сортировки по порядку:')
-console.log(ToDoListWithDescription.tasks)
+newList.addTask('Помыть посуду', 1)
+newList.addTask('Сделать домашку', 2)
+newList.addTask('Купить продукты', 3)
+newList.removeTaskById(2)
+newList.updateTaskById(1, 'Помыть посуду и стекло', 2)
+newList.sortTasksByPriority()
+console.log(newList.tasks)
