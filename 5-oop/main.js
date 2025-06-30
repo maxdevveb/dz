@@ -23,25 +23,36 @@ Orc.prototype.hit = function () {
 }
 
 // Эльф
-function Elf(name, spellTypes) {
+function Elf(name) {
 	Character.call(this, 'Эльф', name, 'эльфийский')
-	this.spellTypes = spellTypes
+	this.spellTypes = [] // массив известных заклинаний
 }
 
 Elf.prototype = Object.create(Character.prototype)
 Elf.prototype.constructor = Elf
 
 Elf.prototype.createSpell = function (spellName) {
-	if (!this.spellTypes || this.spellTypes.length === 0) {
-		console.log(`${this.name} не знает ни одного заклинания`)
-		return
-	}
 	if (!spellName) {
-		console.log(`${this.name} знает заклинания: ${this.spellTypes.join(', ')}`)
+		console.log(`${this.name} не указал название заклинания для создания`)
 		return
 	}
 	if (this.spellTypes.includes(spellName)) {
-		console.log(`${this.name} создает заклинание: ${spellName}`)
+		console.log(`${this.name} уже знает заклинание "${spellName}"`)
+		return
+	}
+	this.spellTypes.push(spellName)
+	console.log(`${this.name} создал новое заклинание: ${spellName}`)
+}
+
+Elf.prototype.castSpell = function (spellName) {
+	if (!spellName) {
+		console.log(
+			`${this.name} знает заклинания: ${this.spellTypes.join(', ') || 'нет'}`
+		)
+		return
+	}
+	if (this.spellTypes.includes(spellName)) {
+		console.log(`${this.name} применяет заклинание: ${spellName}`)
 	} else {
 		console.log(`${this.name} не знает заклинание "${spellName}"`)
 	}
@@ -52,9 +63,11 @@ const orc = new Orc('Тралл', 'молот')
 orc.speak()
 orc.hit()
 
-const elf = new Elf('Иллидан', ['огонь', 'вода'])
+const elf = new Elf('Иллидан')
 elf.speak()
-console.log(elf.spellTypes)
-elf.createSpell('огонь') // Иллидан создает заклинание: огонь
-elf.createSpell('фаербол') // Иллидан не знает заклинание "фаербол"
-elf.createSpell() // Иллидан знает заклинания: огонь, вода
+elf.createSpell('огонь') // Иллидан создал новое заклинание: огонь
+elf.createSpell('вода') // Иллидан создал новое заклинание: вода
+elf.createSpell('огонь') // Иллидан уже знает заклинание "огонь"
+elf.castSpell('огонь') // Иллидан применяет заклинание: огонь
+elf.castSpell('фаербол') // Иллидан не знает заклинание "фаербол"
+elf.castSpell() // Иллидан знает заклинания: огонь, вода
